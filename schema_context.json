@@ -1,0 +1,32 @@
+{
+  "project_name": "Tipton-Probation-Command",
+  "database_type": "Supabase (PostgreSQL)",
+  "critical_rules": [
+    "Do NOT create new tables. Use existing schema.",
+    "Respect all ENUM types (risk_level, appt_status) strictly.",
+    "Use 'case_number' as the primary display identifier for users."
+  ],
+  "schema_definitions": {
+    "probationers": {
+      "table_name": "probationers",
+      "columns": [
+        {"name": "id", "type": "uuid", "notes": "Primary Key"},
+        {"name": "case_number", "type": "text", "notes": "UNIQUE. Must be displayed on all dashboards."},
+        {"name": "full_name", "type": "text"},
+        {"name": "risk_level", "type": "enum", "values": ["Low", "Medium", "High", "Warrant"], "notes": "Determines badge color (Green/Yellow/Orange/Red)"},
+        {"name": "phone_number", "type": "text", "notes": "Used by Voice Agent for ID"},
+        {"name": "is_active", "type": "boolean"}
+      ],
+      "relationships": "Parent to appointments and payments"
+    },
+    "appointments": {
+      "table_name": "appointments",
+      "columns": [
+        {"name": "id", "type": "uuid"},
+        {"name": "probationer_id", "type": "uuid", "notes": "FK to probationers.id"},
+        {"name": "scheduled_time", "type": "timestamptz", "notes": "The source of truth for Reporting Dates"},
+        {"name": "status", "type": "enum", "values": ["Scheduled", "Completed", "Missed", "Excused"]}
+      ]
+    }
+  }
+}

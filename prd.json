@@ -1,0 +1,48 @@
+{
+  "project_goal": "Build a high-density 'Command Center' dashboard for Probation Officers using Next.js 14, Tailwind, and Supabase.",
+  "design_system": {
+    "theme": "Linear-style Dark Mode",
+    "colors": {
+      "background": "#0E0E10",
+      "surface": "#1C1C1F",
+      "primary": "#5E6AD2",
+      "alert": "#F81CE5"
+    },
+    "typography": "Inter for text, Monospace for Case Numbers"
+  },
+  "user_stories": [
+    {
+      "id": "STORY-1",
+      "title": "Project Scaffolding & Supabase Client",
+      "description": "Initialize Next.js 14 app with Tailwind. Configure the Supabase client helper to read from the environment variables. Ensure 'Inter' font is loaded.",
+      "acceptance_criteria": [
+        "Next.js 14 App Router active",
+        "Tailwind config includes custom colors from Design System",
+        "Supabase client connects without error",
+        "Dark mode is default"
+      ]
+    },
+    {
+      "id": "STORY-2",
+      "title": "Probationer Grid (TanStack Table)",
+      "description": "Create a high-density data table fetching data from the 'probationers' Supabase table. Use the schema_context.json to map columns correctly.",
+      "acceptance_criteria": [
+        "Fetch rows from 'probationers' table",
+        "Columns: Case # (Mono), Name, Phone, Risk Level (Badge)",
+        "Risk Level Badge colors: Low=Green, High=Orange, Warrant=Red",
+        "Row height must be 'compact' (Linear style)"
+      ]
+    },
+    {
+      "id": "STORY-3",
+      "title": "Case Detail Drawer",
+      "description": "Clicking a row in the Grid opens a right-side Sheet (Drawer) showing details. Fetch related 'appointments' for that user.",
+      "acceptance_criteria": [
+        "Clicking row opens Drawer state",
+        "Drawer displays Probationer Name & Case Number in header",
+        "List last 3 appointments sorted by date desc",
+        "No page reload (Client Component)"
+      ]
+    }
+  ]
+}

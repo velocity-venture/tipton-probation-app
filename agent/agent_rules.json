@@ -1,0 +1,14 @@
+{
+  "mission": "Build the Python logic core for the Tipton Probation Voice Agent.",
+  "constraints": {
+    "office_hours": "Mon/Wed 8:00-16:30. Closed Tue/Thu/Fri for reporting.",
+    "lunch_lockout": "12:00-13:00 daily.",
+    "late_reporting": "1st and 3rd Thursdays ONLY, 17:00-19:30.",
+    "missed_appt_policy": "Report any Mon/Wed before end of month. DO NOT offer Late Thursday slots for missed appointments.",
+    "payments": "Safety School ($75) is CASH ONLY. Fines can be online."
+  },
+  "required_files": [
+    "agent/tipton_scheduler.py (The logic class)",
+    "agent/test_logic.py (A script to verify the rules work)"
+  ]
+}
